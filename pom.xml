@@ -6,14 +6,16 @@
 	<artifactId>std-webapp-basic</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>std-webapp-basic Maven Webapp</name>
+	<name>std-webapp-basic</name>
 
 	<properties>
+		
 		<java.version>1.8</java.version>
 		<servlet.version>3.1.0</servlet.version>
 		<jsp.version>2.3.1</jsp.version>
 		<el.version>3.0.0</el.version>
 		<jstl.version>1.2</jstl.version>
+		<displaytag.version>1.2</displaytag.version>
 	</properties>
 
 	<dependencies>
@@ -46,13 +48,13 @@
 		<dependency>
 			<groupId>displaytag</groupId>
 			<artifactId>displaytag</artifactId>
-			<version>1.1.1</version>
+			<version>${displaytag.version}</version>
 		</dependency>
 
 	</dependencies>
 
 	<build>
-		<finalName>std-webapp-basic</finalName>
+		<finalName>${project.name}</finalName>
 
 		<plugins>
 			<plugin>
@@ -63,6 +65,16 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>  
+ 				<artifactId>tomcat7-maven-plugin</artifactId>  
+ 				<version>2.2</version>
+ 				<configuration>
+ 					<url>http://localhost:8080/manager/text</url>
+        			<server>tomcat</server>
+        			<path>/${project.name}</path>
+ 				</configuration>  
 			</plugin>
 		</plugins>
 	</build>

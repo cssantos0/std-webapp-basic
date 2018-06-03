@@ -8,13 +8,18 @@
 	<title>Home Page</title>
 	
 	<link rel="stylesheet" href="css/displaytag.css" type="text/css">
-	<link rel="stylesheet" href="css/screen.css" type="text/css">
 	<link rel="stylesheet" href="css/site.css" type="text/css">
 </head>
 <body>
 	<%@ include file = "header.jsp" %>
 	
-	<display:table name="${contactView.contacts}" />
+	<display:table name="${contactView.contacts}" 
+				   decorator="com.fvv.std.web.displaytag.wrapper.ContactWrapper">
+		<display:column property="name" title="Name" />
+		<display:column property="email" title="Email" />
+		<display:column property="address" title="Address" />
+		<display:column property="birthDate" title="Birth Date" />
+	</display:table>
 	
 	<br/>
 	
